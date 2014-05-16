@@ -8,7 +8,7 @@
 --作为lua,我觉得最先需要说明的是:
 print(...) --这个函数允许带几乎任何类型的参数，作用是将输入的内容打印在屏幕上，而打印的地点就是lua的解释器/CommandLine
 
---lua里有这么几种变量类型: number string table boolean function 以及特殊的 nil 和 userdata
+--lua里有这么几种变量类型: number string table boolean function 以及特殊的 nil 和 userdata ，还有一个在WL中不需要使用甚至了解的线程thread
 --[[
 number 数字，无论是整数的1还是实数的1.01在lua里都是number，并没有jass那样的区分
 string 字符串，其他基本和jass中相同，注意区别是lua中字符串的符号种类比jass多，更自由
@@ -63,4 +63,29 @@ while
 0
 >print(6+"1")
 7 --没错，在必要的时候lua会自动将string和number按照需求转换，但如果是不明确变量类型或其他特殊情况的时候最好使用tonumber()或tostring()进行转换
->print()
+>print(1.0-0.8 == 0.2)
+false --或许不能理解为什么这两个值无法相等，但事实就是如此，lua中的数一般都是浮点数，具体可以参考百度
+>print(0x20)
+32 --以0x为开头的数字是十六进制数，在运算时会被自动转换成十进制,例如:
+>print(0x17^0x2)
+529
+
+[[lua的一些特殊函数]]
+--先前我们已经介绍了即为常见的print，这个函数将贯穿整个教程乃至你自己的作图过程，接下来介绍 type
+>print(type("test"))
+string
+>print(type(5))
+number
+>print(type(print))
+function
+>print(type(type))
+function
+>print(type(type(1)))
+string --如你所见，type函数返回值的类型是string，因此当使用条件判断时等式的另一边也务必使用正确类型的值
+--在上文提到过的tonumber和tostring:
+>print(type(tonumber("5")),type(tostring(5)))
+number	string
+>print(type(nil),type(tonumber(nil)),type(tonumber(nil)))
+nil  nil  string --nil无法转换为一个数
+>print(tostring(nil).." is a string now.")
+nil is a string now. --但是nil允许变成一个字符串，这个字符串的内容就是"nil"
