@@ -79,9 +79,7 @@ number
 >print(type(print))
 function
 >print(type(type))
-function
->print(type(type(1)))
-string --如你所见，type函数返回值的类型是string，因此当使用条件判断时等式的另一边也务必使用正确类型的值
+function--如你所见，type函数返回值的类型是string，因此当使用条件判断时等式的另一边也务必使用正确类型的值
 --在上文提到过的tonumber和tostring:
 >print(type(tonumber("5")),type(tostring(5)))
 number	string
