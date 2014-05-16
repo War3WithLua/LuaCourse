@@ -8,7 +8,7 @@
 --作为lua,我觉得最先需要说明的是:
 print(...) --这个函数允许带几乎任何类型的参数，作用是将输入的内容打印在屏幕上，而打印的地点就是lua的解释器/CommandLine
 
---[[
+[[
 lua里有这么几种变量类型: number string table boolean function 以及特殊的 nil 和 userdata
 number 数字，无论是整数的1还是实数的1.01在lua里都是number，并没有jass那样的区分
 string 字符串，其他基本和jass中相同，注意区别是lua中字符串的符号种类比jass多，更自由
